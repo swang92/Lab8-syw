@@ -17,26 +17,21 @@ public class WordCounter {
 
   /** Counts the frequencies of all words in the given iterator. */
   public void countWords(final Iterator<String> words) {
-
     while (words.hasNext()) {
       String test = words.next().toLowerCase();
       if (theMap.containsKey(test)) {
-        theMap.get((test) + 1);
-      }
-      else
-        theMap.put(test,1);
+        theMap.replace(test, theMap.get(test), (theMap.get(test) + 1));
+      } else theMap.put(test, 1);
     }
   }
 
   /** Retrieve the frequency of a particular word. */
   public int getCount(final String word) {
-    if (theMap.get(word) == null){
-      return -1;
+    int count = 0;
+    if (theMap.containsKey(word)) {
+      count = theMap.get(word);
     }
-    else {
-      int count = theMap.get(word);
-      return count;
-    }
+    return count;
   }
 
   /** Retrieve the map representing all word frequencies. */

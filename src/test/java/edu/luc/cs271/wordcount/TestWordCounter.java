@@ -2,15 +2,14 @@ package edu.luc.cs271.wordcount;
 
 import static org.junit.Assert.*;
 
+import java.util.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
-
 public class TestWordCounter {
 
-   WordCounter fixture;
+  WordCounter fixture;
 
   @Before
   public void setUp() {
@@ -19,7 +18,8 @@ public class TestWordCounter {
   }
 
   @After
-  public void tearDown() { fixture = null;
+  public void tearDown() {
+    fixture = null;
   }
 
   @Test
@@ -41,11 +41,10 @@ public class TestWordCounter {
 
     fixture.countWords(iterator);
 
-    assertEquals(fixture.getCount("Hello"), -1);
-    assertEquals(fixture.getCount("how"), 1);
+    assertEquals(fixture.getCount("Hello"), 1);
+    assertEquals(fixture.getCount("how"), 2);
     assertEquals(fixture.getCount("are"), 1);
     assertEquals(fixture.getCount("data"), -1);
-
 
     // TODO run the SUT on a specific String iterator with some repeated words,
     // then use assertions to verify the correct counts
